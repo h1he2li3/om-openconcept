@@ -55,6 +55,8 @@ class AllElectricSinglePropulsionSystemWithThermal_Compressible(Group):
             SimpleMotor(num_nodes=nn, weight_inc=1 / 5000, weight_base=0, efficiency=0.97),
             promotes_inputs=["throttle"],
         )
+        # J is the Advance Ratio. J = Va / n * D
+        # Va is True Air Speed of aircraft / water speed of the vessel, n is the rotational speed of propellor in revolutions per second, D is the diameter of the propellor in meters.
         self.add_subsystem(
             "prop1",
             SimplePropeller(num_nodes=nn, num_blades=4, design_J=2.2, design_cp=0.55),
